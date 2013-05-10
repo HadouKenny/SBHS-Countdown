@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SBHS Countdown</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        .centered {
+            text-align: center;
+            position: absolute;
+            left: 0px;
+            width: 100%;
+            top: 5%;
+            overflow: visible;
+            display: block;
+            /*top: 50%;
+            left: 50%;
+            height: 300px;
+            *//*width: 700px;*//*
+            margin-top: -200px;
+            margin-left: -400px;*/
+        }
+        .align {
+            text-align: center;
+            position: absolute;
+            left: 0px;
+            width: 100%;
+            overflow: visible;
+            display: block;
+        }
+        .FAQ {
+            cursor: hand;
+            cursor: pointer;
+            border: 1px solid #CCC;
+            width: auto;
+            margin-top: 10px;
+            line-height: 1.2em;
+            padding: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            font-size: 23px;
+            color: #D6D6D6;
+        }
+        .ANS {
+            display:none;
+            margin-top:7px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            color: #ffffff;
+            text-align: left;
+        }
+        #heading {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 40px;
+            color: #D6D6D6;
+            padding-bottom:0.2em;
+            padding-top:0em;
+            line-height:0.8em;
+        }
+        #body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 25px;
+            color: #D6D6D6;
+            line-height:0.8em;
+
+        }
+        #faq{
+            position: fixed;
+            bottom: 7px;
+            left: 10px;
+            font-family: "Roboto", sans-serif;
+            text-align: left;
+            font-weight: 100;
+            font-size: 18px;
+            color: #d7d7d7;
+            border-left-width: 15px;
+            z-index: 10;
+        }
+        #bottom {
+            position: fixed;
+            bottom: 7px;
+            font-family: "Roboto", sans-serif;
+            text-align: center;
+            font-weight: 100;
+            font-size: 18px;
+        }
+        #copyright{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-family: "Roboto", sans-serif;
+            text-align: right;
+            font-weight: 100;
+            font-size: 15px;
+            color: #d7d7d7;
+
+        }
+
+    </style>
+    <script>
+        //disable selection
+        window.onload = function() {
+            var labels = document.getElementsByTagName('label');
+            for (var i = 0; i < labels.length; i++) {
+                disableSelection(labels[i]);
+            }
+        };
+        //toggle FAQ
+        function toggle(Info) {
+            var CState = document.getElementById(Info);
+            CState.style.display = (CState.style.display != 'block')
+                    ? 'block' : 'none';
+        }
+        function disableSelection(element) {
+            if (typeof element.onselectstart != 'undefined') {
+                element.onselectstart = function() { return false; };
+            } else if (typeof element.style.MozUserSelect != 'undefined') {
+                element.style.MozUserSelect = 'none';
+            } else {
+                element.onmousedown = function() { return false; };
+            }
+        }
+        /*begin Google Analytics*/
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-40772969-1', 'sydneyboyshigh.asia');
+        ga('send', 'pageview');
+        /*end Google Analytics*/
+
+    </script>
+</head>
+<body bgcolor="#000000">
+<div id="container" class="centered" >
+    <div id="heading"><b>FAQ</b></div>
+    <div id="body">
+        <DIV class="FAQ" onclick="toggle('faq1')">
+            School portal has a countdown too!
+            <div id="faq1" class="ANS">
+                <li>Portal countdown is often inaccurate by as much as a minute.</li>
+                <li>You go through login prompt after login prompt - to see a <sub>tiny</sub> ticker.</li>
+                <br>
+            </div>
+        </DIV>
+        <DIV class="FAQ" onclick="toggle('faq2')">
+            How can I get here with 1-Click?
+            <div id="faq2" class="ANS">
+                <b>Android:</b>
+                <li>Menu button/<img src="overflow.png" height=20px> Star icon (Favourite). Long-hold bookmark to "Add to Home Screen".</li>
+                <hr width="130" align="left">
+                <b>iOS:</b>
+                <li><i>Safari</i> - Action button (square with arrow coming out) > "Add to Home Screen".</li>
+                <li><i>Chrome</i> - You can't. Upgrade to a Nexus device with Android for a customisable OS.</li>
+                <hr width="130" align="left">
+                <b>Desktop/Laptop:</b>
+                <li>Add us to your bookmark bar.</li>
+                <hr width="130" align="left">
+                <b>DET 'Craptop':</b>
+                <li>Use a proxy</li>
+            </div>
+        </DIV>
+
+        <DIV class="FAQ" onclick="toggle('faq3')">
+            Can I donate to you?
+            <div id="faq3" class="ANS">
+                Yes! The domain expires in September 2013 and will cost $10 to renew. You can support SBHS countdown with a gold coin donation to me at school.
+                (Contact me by clicking on "Give Feedback"... Hmm, maybe I should start a kickstarter)
+            </div>
+        </DIV>
+        <br>
+        <br>
+    </div>
+</div>
+<div id="faq"><a href="index.html" style="color: #00aced"><img src="back.png" height="16">Back</a></div>
+<div id="bottom" class="align"><a href="https://docs.google.com/forms/d/1J-FFPzJkBjCOY4U73xIIe_UwwMqMevmX6T9FZKLmQA0/viewform" target="_blank" style="color: #00aced">Give Feedback</a></div>
+<div id="copyright">&#169 Jerry Yip 2013</div>
+</body>
+</html>
+<!-- Hosting24 Analytics Code -->
+<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script>
+<!-- End Of Analytics Code -->
