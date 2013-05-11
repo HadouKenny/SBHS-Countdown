@@ -4,7 +4,7 @@ var todayMinutes;
 var todayDesc;
 var nextDay = false;
 
-setInterval(function doCount(){
+function doCount(){
     var t1Hours = [9,9,10,11,11,11,12,13,14,15];
     var t1Minutes = [0,5,5,10,30,50,50,55,15,15];
     var t1Desc = ["School Starts","Period 1","Period 2","Lunch","Lunch 2","Period 3","Period 4","Recess","Period 5","End of Day"];
@@ -92,7 +92,7 @@ setInterval(function doCount(){
     }
     //document.getElementById("debug").innerHTML= "Target ["+i+"]="+todayHours[i]+":"+todayMinutes[i]+". NextDay="+nextDay;
 
-}, 500);
+}
 
 function zeroPad(num) {
     var s = "000" + num;
