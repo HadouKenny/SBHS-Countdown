@@ -106,9 +106,11 @@
 
     ga('create', 'UA-40772969-1', 'sydneyboyshigh.asia');
     ga('send', 'pageview');
+    
+    window.onload = function(){doCount()};
 </script>
 </head>
-<body bgcolor="#000000" onload="doCount()" onclick="doCount()">
+<body bgcolor="#000000" onclick="doCount()">
 <div id="container" class="centered" >
     <div id="description"></div>
     <div id="in">in</div>
