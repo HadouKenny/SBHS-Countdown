@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>SBHS Countdown</title>
-    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -70,6 +70,18 @@
             line-height:0.8em;
 
         }
+        #faq{
+            position: fixed;
+            bottom: 7px;
+            left: 10px;
+            font-family: "Roboto", sans-serif;
+            text-align: left;
+            font-weight: 100;
+            font-size: 15px;
+            color: #d7d7d7;
+            border-left-width: 15px;
+            z-index: 10;
+        }
         #bottom {
             position: fixed;
             bottom: 7px;
@@ -114,14 +126,16 @@
                 element.onmousedown = function() { return false; };
             }
         }
-        /*begin Google Analytics*/
+
+    </script>
+    <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
         ga('create', 'UA-40772969-1', 'sydneyboyshigh.asia');
         ga('send', 'pageview');
-        /*end Google Analytics*/
 
     </script>
 </head>
@@ -132,8 +146,8 @@
         <DIV class="FAQ" onclick="toggle('faq1')">
             School portal has a countdown too!
             <div id="faq1" class="ANS">
-                <li>Portal countdown is often inaccurate by as much as a minute.</li>
-                <li>You go through login prompt after login prompt - to see a <sub>tiny</sub> ticker.</li>
+                <li>Portal countdown is often inaccurate by as much as a minute!</li>
+                <li>You go through LOGIN PROMPT after LOGIN PROMPT, then waiting for it to load - to see a <sub>tiny</sub> ticker.</li>
                 <br>
             </div>
         </DIV>
@@ -141,7 +155,7 @@
             How can I get here with 1-Click?
             <div id="faq2" class="ANS">
                 <b>Android:</b>
-                <li>Menu button/<img src="overflow.png" height=20px> Star icon (Favourite). Long-hold bookmark to "Add to Home Screen".</li>
+                <li>Menu button > Star icon (Favourite). Long-hold bookmark to "Add to Home Screen".</li>
                 <hr width="130" align="left">
                 <b>iOS:</b>
                 <li><i>Safari</i> - Action button (square with arrow coming out) > "Add to Home Screen".</li>
@@ -158,8 +172,10 @@
         <DIV class="FAQ" onclick="toggle('faq3')">
             Can I donate to you?
             <div id="faq3" class="ANS">
-                Yes! The domain expires in September 2013 and will cost $10 to renew. You can support SBHS countdown with a gold coin donation to me at school.
-                (Contact me by clicking on "Give Feedback"... Hmm, maybe I should start a kickstarter)
+                Yes! The domain expires in September 2013 and will cost $10 to renew. You can support SBHS countdown with a $2 donation.
+                (Contact me by clicking on "Give Feedback"... Hmm, maybe I should start a kickstarter)<br>
+                You can also support us with code on <a href="https://github.com/0xJerry/SBHS-Countdown" target="_blank" style="color: #00aced">GitHub</a>.
+
             </div>
         </DIV>
         <br>
@@ -168,8 +184,6 @@
 </div>
 <div id="bottom" class="align"><a href="https://docs.google.com/forms/d/1J-FFPzJkBjCOY4U73xIIe_UwwMqMevmX6T9FZKLmQA0/viewform" target="_blank" style="color: #00aced">Give Feedback</a></div>
 <div id="copyright">&#169 Jerry Yip 2013<br>Ported by Kenny Liu</div>
+
 </body>
 </html>
-<!-- Hosting24 Analytics Code -->
-<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script>
-<!-- End Of Analytics Code -->
