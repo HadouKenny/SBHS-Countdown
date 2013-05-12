@@ -1,3 +1,4 @@
+
 var day;
 var todayHours;
 var todayMinutes;
@@ -57,6 +58,8 @@ setInterval(function doCount(){
     //weekend correction
     if (day==6){
         todayHours[i] += 48;
+    }else if (day==0){
+        todayHours[i] += 24
     }
 
     //next period
