@@ -16,6 +16,8 @@
     
     <preference name="permissions" value="none"/>
     <preference name="exit-on-suspend" value="true" />
+    <icon src="icons/default.png" />
+    <icon src="icons/blackberry.png" gap:platform="blackberry" />
 
 
 </widget>
