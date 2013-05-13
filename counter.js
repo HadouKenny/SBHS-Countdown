@@ -1,4 +1,3 @@
-
 var day;
 var todayHours;
 var todayMinutes;
@@ -25,7 +24,7 @@ setInterval(function doCount(){
     var nowSeconds = now.getSeconds();
 
     //weekday overnight correction
-    if (nowHours >= 15 && i == 0 && day!=6){
+    if ((nowHours*60 + nowMinutes)>(195) && day!=6){
         day += 1;
         nextDay = true;
     }
@@ -63,10 +62,9 @@ setInterval(function doCount(){
     }
 
     //next period
-    //var i = 0;
     var todayAbsolute = todayHours[i]*60 + todayMinutes[i];
     var nowAbsolute = nowHours*60 + nowMinutes;
-    while (todayAbsolute < nowAbsolute && nowHours <= 15){i++}
+    while (todayAbsolute < nowAbsolute && nowAbsolute < 195){i++}
     if (i==10){i=0}
 
 
@@ -91,7 +89,7 @@ setInterval(function doCount(){
         document.getElementById("counter").innerHTML= "<b>"+rHours+"</b>h, <b>"+ zeroPad(rMinutes) +"</b>m, <b>"+zeroPad(rSeconds)+"</b>s.";
     }
     else{
-        document.getElementById("counter").innerHTML= rMinutes +"m, "+rSeconds+"s.";
+        document.getElementById("counter").innerHTML= "<b>"+zeroPad(rMinutes)+"</b>m, <b>"+zeroPad(rSeconds)+"</b>s.";
     }
     //document.getElementById("debug").innerHTML= "Target ["+i+"]="+todayHours[i]+":"+todayMinutes[i]+". NextDay="+nextDay;
 
