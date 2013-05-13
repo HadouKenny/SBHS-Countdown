@@ -14,10 +14,6 @@
     </description>
   
 	<preference name="exit-on-suspend" value="true" />
-	
-	
-    <author href="https://build.phonegap.com" email="support@phonegap.com">
-        Hardeep Shoker 
-    </author>
+
 
 </widget>
