@@ -12,8 +12,9 @@
     <description>
         SBHS Belltimes also available on www.sydneyboyshigh.asia 
     </description>
-  
-	<preference name="exit-on-suspend" value="true" />
+    
+    <preference name="permissions" value="none"/>
+    <preference name="exit-on-suspend" value="true" />
 
 
 </widget>
