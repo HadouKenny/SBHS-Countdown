@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.sbhs.belltimes"
+        versionCode="10" 
+        version   = "1.2">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Belltimes</name>
+
+    <description>
+        SBHS Belltimes also available on www.sydneyboyshigh.asia 
+    </description>
+  
+	<preference name="exit-on-suspend" value="true" />
+	
+	
+    <author href="https://build.phonegap.com" email="support@phonegap.com">
+        Hardeep Shoker 
+    </author>
+
+</widget>
