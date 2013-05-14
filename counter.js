@@ -24,7 +24,7 @@ setInterval(function doCount(){
     var nowSeconds = now.getSeconds();
 
     //weekday overnight correction
-    if ((nowHours*60 + nowMinutes)>(195) && day!=6){
+    if ((nowHours*60 + nowMinutes)>=915 && day!=6){
         day += 1;
         nextDay = true;
     }
@@ -62,9 +62,8 @@ setInterval(function doCount(){
     }
 
     //next period
-    var todayAbsolute = todayHours[i]*60 + todayMinutes[i];
     var nowAbsolute = nowHours*60 + nowMinutes;
-    while (todayAbsolute < nowAbsolute && nowAbsolute < 195){i++}
+    while ((todayHours[i]*60 + todayMinutes[i]) < nowAbsolute && nowAbsolute < 915){i++}
     if (i==10){i=0}
 
 
