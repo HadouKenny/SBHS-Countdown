@@ -1,3 +1,4 @@
+//counter.js v1.7 - debug
 var day;
 var todayHours;
 var todayMinutes;
@@ -63,13 +64,13 @@ setInterval(function doCount(){
 
     //next period
     var nowAbsolute = nowHours*60 + nowMinutes;
-    while ((todayHours[i]*60 + todayMinutes[i]) < nowAbsolute && nowAbsolute < 915){i++}
+    while ((todayHours[i]*60 + todayMinutes[i] - 1) < nowAbsolute && nowAbsolute < 915){i++}
     if (i==10){i=0}
 
 
     //put last
     var rHours = (todayHours[i]-nowHours);
-    var rMinutes = (todayMinutes[i]-nowMinutes);
+    var rMinutes = (todayMinutes[i]-nowMinutes-1);
     var rSeconds = (60-nowSeconds);
     if (rSeconds == 60){
         rMinutes += 1;
@@ -77,7 +78,7 @@ setInterval(function doCount(){
     }
 
     //negative correction
-    if (todayMinutes[i] < nowMinutes){
+    if (todayMinutes[i]-1 < nowMinutes){
         rHours -= 1;
         rMinutes += 60;
     }
@@ -90,7 +91,7 @@ setInterval(function doCount(){
     else{
         document.getElementById("counter").innerHTML= "<b>"+zeroPad(rMinutes)+"</b>m, <b>"+zeroPad(rSeconds)+"</b>s.";
     }
-    //document.getElementById("debug").innerHTML= "Target ["+i+"]="+todayHours[i]+":"+todayMinutes[i]+". NextDay="+nextDay;
+    document.getElementById("debug").innerHTML= "Debug: Now="+nowHours+":"+nowMinutes+":"+nowSeconds+", Target="+todayHours[i]+":"+todayMinutes[i];
 
 }, 500);
 
