@@ -5,5 +5,6 @@ Coded by Jerry Yip
 Ported by Kenny Liu
 
 Compile checklist:
-- update app version in config.xml
-- update app version in faq box 2
+[x] Set splash screen to 1 sec (val=1000)
+[x] Remove debug line
+[ ] Edit FAQ
