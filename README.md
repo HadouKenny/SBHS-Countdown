@@ -11,3 +11,6 @@ Compile checklist:
 [x] Remove debug line
 
 [ ] Edit FAQ
+
+
+Almost ready for release
