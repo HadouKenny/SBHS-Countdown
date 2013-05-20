@@ -18,7 +18,6 @@
     <preference name="exit-on-suspend" value="true" />
     <icon src="icons/default.png" />
     <icon src="icons/blackberry.png" gap:platform="blackberry" />
-    <gap:splash src="splash.jpg" />
-
+    <gap:splash src="splash.png" gap:platform="android" />
 
 </widget>
