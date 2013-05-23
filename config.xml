@@ -16,7 +16,7 @@
     
     <preference name="permissions" value="none"/>
     <preference name="exit-on-suspend" value="true" />
-    <preference name="splash-screen-duration" value="2150" />
+    <preference name="splash-screen-duration" value="2250" />
     <preference name="phonegap-version" value="2.7.0" />
     <icon src="icons/default.png" />
     <icon src="icons/blackberry.png" gap:platform="blackberry" />
