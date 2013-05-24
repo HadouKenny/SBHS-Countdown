@@ -8,5 +8,5 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
-  src: local('Roboto Light'), local('Roboto-Light'), url('/fonts/Roboto-300.ttf) format('truetype');
+  src: local('Roboto Light'), local('Roboto-Light'), url('/fonts/Roboto-300.ttf') format('truetype');
 }
