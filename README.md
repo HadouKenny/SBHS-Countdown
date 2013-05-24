@@ -12,5 +12,7 @@ Compile checklist:
 
 [ ] Edit FAQ
 
+[ ] Font snippet in index
+
 
 Almost ready for release
