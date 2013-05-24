@@ -1,9 +1,10 @@
-//counter.js v2.0 release
+//counter.js v2.5 release
 var day;
 var todayHours;
 var todayMinutes;
 var todayDesc;
 var nextDay = false;
+var weekChecked = false;
 
 setInterval(function doCount(){
     var t1Hours = [9,9,10,11,11,11,12,13,14,15];
@@ -16,7 +17,7 @@ setInterval(function doCount(){
 
     var t3Hours = [9,9,10,11,11,12,13,14,14,15];
     var t3Minutes = [25,30,25,25,45,5,0,0,20,15];
-    var t3Desc = ["School Starts","Period 1","Period 2","Lunch","Lunch 2","Period 3","Period 4","Recess","Period 5","Weekends"];
+    var t3Desc = ["School Starts","Period 1","Period 2","Lunch","Lunch 2","Period 3","Period 4","Recess","Period 5","Weekend"];
 
     var now = new Date();
     day = now.getDay();
@@ -92,9 +93,40 @@ setInterval(function doCount(){
         document.getElementById("counter").innerHTML= "<b>"+zeroPad(rMinutes)+"</b>m, <b>"+zeroPad(rSeconds)+"</b>s.";
     }
 
+    //week
+    if (weekChecked==false){
+        var weekNum = getWeekNumber(now) - 17;
+        var weekLetter;
+        switch (weekNum){
+            case 5:
+            case 8:
+                weekLetter="A";
+                break;
+            case 6:
+            case 9:
+                weekLetter="B";
+                break;
+            case 4:
+            case 7:
+                weekLetter="C";
+                break;
+        }
+        document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
+        weekChecked=true;
+    }
+
 }, 500);
 
 function zeroPad(num) {
     var s = "000" + num;
     return s.substr(s.length-2);
+}
+
+function getWeekNumber(d) {
+    d = new Date(d);
+    d.setHours(0,0,0);
+    d.setDate(d.getDate() + 4 - (d.getDay()||7));
+    var yearStart = new Date(d.getFullYear(),0,1);
+    var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7)
+    return [weekNo];
 }
