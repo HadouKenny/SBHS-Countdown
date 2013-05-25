@@ -114,6 +114,13 @@ setInterval(function doCount(){
         document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
         weekChecked=true;
     }
+    if (weekNum > 9){
+        document.getElementById("description").innerHTML= "<b>Update app now</b>";
+        document.getElementById("counter").innerHTML= "Visit website";
+        document.getElementById("week").innerHTML= "<b>APP IS PAST ITS USE-BY DATE.</b>";
+        document.getElementById("copyright").innerHTML= "GO TO  http://www.sydneyboyshigh.asia NOW";
+        document.getElementById("bottom").innerHTML= " ";
+    }
 
 }, 500);
 
