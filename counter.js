@@ -1,4 +1,4 @@
-//counter.js v2.55 release
+//counter.js v2.56 release
 var day;
 var todayHours;
 var todayMinutes;
@@ -26,7 +26,7 @@ setInterval(function doCount(){
     var nowSeconds = now.getSeconds();
 
     //weekday overnight correction
-    if ((nowHours*60 + nowMinutes)>=915 && day!=6){
+    if ((nowHours*60 + nowMinutes)>=915 && day!=6 && day!=0){
         day += 1;
         nextDay = true;
     }
@@ -131,7 +131,7 @@ setInterval(function doCount(){
         document.getElementById("copyright").innerHTML= "GO TO  http://www.sydneyboyshigh.asia NOW";
         document.getElementById("bottom").innerHTML= " ";
     }
-
+    alert("week"+weekNum+"day"+day);
 }, 500);
 
 function zeroPad(num) {
