@@ -22,5 +22,9 @@
     <icon src="Icons/icon.png" />
     
     <!-- <access origin="*" browserOnly="true" /> -->
-
+    
+    <gap:plugin name="FacebookConnect">
+        <param name="APP_ID" value="266559516821504" />
+    </gap:plugin>
+ 
 </widget>
