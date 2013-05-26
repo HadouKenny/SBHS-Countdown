@@ -1,4 +1,4 @@
-//counter.js v2.5 release
+//counter.js v2.55 release
 var day;
 var todayHours;
 var todayMinutes;
@@ -97,21 +97,31 @@ setInterval(function doCount(){
     if (weekChecked==false){
         var weekNum = getWeekNumber(now) - 17;
         var weekLetter;
+        var weekLetterI;
+        var weekLetterArr=["A","B","C"]
+        //weekend correction
+        if ((day==5 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){weekNum+=1}
         switch (weekNum){
             case 5:
             case 8:
-                weekLetter="A";
+                weekLetterI=0;
                 break;
             case 6:
             case 9:
-                weekLetter="B";
+                weekLetterI=1;
                 break;
             case 4:
             case 7:
-                weekLetter="C";
+                weekLetterI=2;
                 break;
         }
-        document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
+        weekLetter=weekLetterArr[weekLetterI];
+        if ((day==5 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){
+            document.getElementById("week").innerHTML= "School starts on Week <b>"+weekNum+weekLetter+"</b>";
+        }
+        else{
+            document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
+        }
         weekChecked=true;
     }
     if (weekNum > 9){
