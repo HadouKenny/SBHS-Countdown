@@ -21,7 +21,6 @@
     <preference name="phonegap-version" value="2.7.0" />
     <icon src="Icons/icon.png" />
     
-    <access origin="*" />
-    <access origin="*" browserOnly="true" />
+    <!-- <access origin="*" browserOnly="true" /> -->
 
 </widget>
