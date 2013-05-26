@@ -23,7 +23,7 @@
     
     <!-- <access origin="*" browserOnly="true" /> -->
     
-    <gap:plugin name="ChildBrowser" />
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
     
     <gap:plugin name="FacebookConnect">
         <param name="APP_ID" value="266559516821504" />
