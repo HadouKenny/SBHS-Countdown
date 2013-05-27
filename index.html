@@ -100,10 +100,14 @@
     </style>
 
     <script type="text/javascript"language="javascript"src="counter.js?v=2.5"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
-    <!--PHONEGAP SPECIFIC FOR FACEBOOK-->
+    <!--PHONEGAP SPECIFIC -->
     <script src="cdv-plugin-fb-connect.js"></script>
     <script src="facebook-js-sdk.js"></script>
+    <script type="text/javascript" src="js/libs/GALocalStorage.js"></script>
+    <script>
+        ga_storage._setAccount('UA-40772969-3'); //Replace with your own
+        ga_storage._trackPageview('/index', 'android_index_2.6');
+    </script>
     
 </head>
 <body bgcolor="#000000">
