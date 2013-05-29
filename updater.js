@@ -1,4 +1,4 @@
-function checkIfRemoteFileExists(http://sydneyboyshigh.asia/farq.html)
+function checkIfRemoteFileExists(fileToCheck)
 {
     var tmp=new Image;
     tmp.src=fileToCheck;
@@ -7,4 +7,6 @@ function checkIfRemoteFileExists(http://sydneyboyshigh.asia/farq.html)
         alert("You are up to date!");        
     else        
      alert("An update is available!");        
-}
+};
+
+checkIfRemoteFileExists(http://sydneyboyshigh.asia/farq.html)
