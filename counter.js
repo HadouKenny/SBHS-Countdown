@@ -1,4 +1,4 @@
-//counter.js v2.57 release
+//counter.js v2.7 release
 var day;
 var todayHours;
 var todayMinutes;
@@ -116,20 +116,27 @@ setInterval(function doCount(){
                 break;
         }
         weekLetter=weekLetterArr[weekLetterI];
-        if ((day==5 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){
-            document.getElementById("week").innerHTML= "School starts on Week <b>"+weekNum+weekLetter+"</b>";
+        if (updateAvailable==false){
+
+            if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){
+
+                document.getElementById("week").innerHTML= "School starts on Week <b>"+weekNum+weekLetter+"</b>";
+            }
+            else{
+                document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
+            }
         }
-        else{
-            document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
+        else{ //update available
+            document.getElementById("week").innerHTML=updateText;
         }
         weekChecked=true;
     }
-    if (weekNum > 9){
+    /*if (weekNum > 9){
         document.getElementById("description").innerHTML= "<b>Update app now</b>";
         document.getElementById("counter").innerHTML= "Visit website";
         document.getElementById("week").innerHTML= "<b>APP IS PAST ITS USE-BY DATE.</b>";
         document.getElementById("copyright").innerHTML= "GO TO  http://www.sydneyboyshigh.asia NOW";
-        document.getElementById("bottom").innerHTML= " ";
+        document.getElementById("bottom").innerHTML= " ";*/
     }
 }, 500);
 
