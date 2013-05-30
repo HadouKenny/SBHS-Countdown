@@ -98,10 +98,14 @@
 
         }
     </style>
-
+    <!--Android Specific-->
+    <script type="text/javascript"language="javascript">
+        var appVersion = "2.7";
+        var updateAvailable = false;
+        var updateText;
+    </script>
+    <script type="text/javascript"language="javascript"charset="utf-8" src="remote_update.js"></script>
     <script type="text/javascript"language="javascript"src="counter.js"></script>
-    <script type="text/javascript"language="javascript">var updateAvailable = false;var updateText;</script>
-    <script type="text/javascript"language="javascript"charset="utf-8" src="http://www.sydneyboyshigh.asia/downloads/remote_update.js"></script>
     
     <!--Phonegap Specific-->
     <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
@@ -109,8 +113,8 @@
     <script src="facebook-js-sdk.js"></script>
     <script type="text/javascript" src="GALocalStorage.js"></script>
     <script>
-    ga_storage._setAccount('UA-40772969-3'); //Replace with your own
-    ga_storage._trackPageview('/2.7-index.html');
+    ga_storage._setAccount('UA-40772969-3');
+    ga_storage._trackPageview('/2.7-index.html'); //REMEMBER UPDATE THIS
     </script>
     
 </head>
