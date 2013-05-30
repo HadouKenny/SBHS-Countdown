@@ -100,7 +100,7 @@ setInterval(function doCount(){
         var weekLetterI;
         var weekLetterArr=["A","B","C"]
         //weekend correction
-        if ((day==5 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){weekNum+=1}
+        if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){weekNum+=1}
         switch (weekNum){
             case 5:
             case 8:
@@ -116,6 +116,8 @@ setInterval(function doCount(){
                 break;
         }
         weekLetter=weekLetterArr[weekLetterI];
+
+        /*Android Specific*/
         if (updateAvailable==false){
 
             if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){
@@ -131,13 +133,14 @@ setInterval(function doCount(){
         }
         weekChecked=true;
     }
-    /*if (weekNum > 9){
+
+/*    if (weekNum > 9){
         document.getElementById("description").innerHTML= "<b>Update app now</b>";
         document.getElementById("counter").innerHTML= "Visit website";
         document.getElementById("week").innerHTML= "<b>APP IS PAST ITS USE-BY DATE.</b>";
         document.getElementById("copyright").innerHTML= "GO TO  http://www.sydneyboyshigh.asia NOW";
-        document.getElementById("bottom").innerHTML= " ";*/
-    }
+        document.getElementById("bottom").innerHTML= " ";
+    }*/
 }, 500);
 
 function zeroPad(num) {
