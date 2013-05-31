@@ -4,15 +4,12 @@ Coded by Jerry Yip
 
 Ported by Kenny Liu
 
+Version 2.7 released
+
+Version 2.8 in production
+
 Compile checklist:
 
-[x] Remove debug line
+[ ] Complete changed belltimes sync
 
-[ ] Edit FAQ
-
-[ ] Font snippet in index
-
-[ ] Get PushLink working (optional)
-
-
-Almost ready for release
+[ ] Work on reducing file size to 1mb if possible
