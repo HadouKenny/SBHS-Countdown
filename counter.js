@@ -1,4 +1,4 @@
-//counter.js v2.7 release
+//counter.js v2.8 release
 var day;
 var todayHours;
 var todayMinutes;
