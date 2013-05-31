@@ -6,19 +6,38 @@ var todayDesc;
 var nextDay = false;
 var weekChecked = false;
 
+var assemblyDay = false;
+var assemblyReason;
+var assemblyChecked = false;
+
 setInterval(function doCount(){
-    var t1Hours = [9,9,10,11,11,11,12,13,14,15];
-    var t1Minutes = [0,5,5,10,30,50,50,55,15,15];
-    var t1Desc = ["School Starts","Period 1","Period 2","Lunch","Lunch 2","Period 3","Period 4","Recess","Period 5","End of Day"];
+    //normal times
+    var t1Hours = [9,9,10,10,11,11,11,12,12,13,14,15];
+    var t1Minutes = [0,5,5,10,10,30,50,50,55,55,15,15];
+    var t1Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","End of Day"];
 
-    var t2Hours = [9,9,10,11,11,12,12,13,14,15];
-    var t2Minutes = [0,5,5,10,30,30,50,10,10,15];
-    var t2Desc = ["School Starts","Period 1","Period 2","Recess","Period 3","Lunch","Lunch 2","Period 4","Period 5","End of Day"];
+    var t2Hours = [9,9,10,11,11,11,12,12,13,14,14,15];
+    var t2Minutes = [0,5,5,10,10,30,30,50,10,10,15,15];
+    var t2Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Recess","Period 3","Lunch","Lunch 2","Period 4","Period 4 Ends","Period 5","End of Day"];
 
-    var t3Hours = [9,9,10,11,11,12,13,14,14,15];
-    var t3Minutes = [25,30,25,25,45,5,0,0,20,15];
-    var t3Desc = ["School Starts","Period 1","Period 2","Lunch","Lunch 2","Period 3","Period 4","Recess","Period 5","Weekend"];
+    var t3Hours = [9,9,10,10,11,11,12,13,13,14,14,15];
+    var t3Minutes = [25,30,25,30,25,45,5,0,5,0,20,15];
+    var t3Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","Weekend"];
 
+    //assembly times
+    var a1Hours = [9,9,10,10,11,11,12,13,13,13,14,15];
+    var a1Minutes = [0,5,15,20,30,50,10,0,5,55,15,15];
+    var a1Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","End of Day"];
+
+    var a2Hours = [9,9,10,10,11,11,12,12,13,14,15];
+    var a2Minutes = [0,5,10,15,20,40,30,50,10,10,15];
+    var a2Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Recess","Period 3","Lunch","Lunch 2","Period 4","Period 4 Ends","Period 5","End of Day"];
+
+    var a3Hours = [9,9,10,10,11,12,12,13,13,14,14,15];
+    var a3Minutes = [25,30,35,40,45,5,25,10,15,0,20,15];
+    var a3Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","Weekend"];
+
+    //begin logic
     var now = new Date();
     day = now.getDay();
     var nowHours = now.getHours();
@@ -31,24 +50,63 @@ setInterval(function doCount(){
         nextDay = true;
     }
 
+    <!--BEGIN GRAB SBHS CHANGED TIMES FLAGS-->
+    if (assemblyChecked==false){
+
+        var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-0'+(now.getMonth()+1)+'-'+now.getDate();
+        //var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-05-30';
+        $.getJSON(url, function(data){
+            console.log(data.bellsAltered);
+            if (data.bellsAltered==true){
+                console.log("Bell is altered today!")
+                assemblyDay = true;
+                assemblyReason = data.bellsAlteredReason;
+            }
+        });
+        assemblyChecked=true;
+    }
+    <!--END GRAB SBHS CHANGED TIMES FLAGS-->
+
     //grab timetables
-    switch (day){
-        case 3: //wed
-        case 4:
-            todayHours = t2Hours.slice(0);
-            todayMinutes = t2Minutes.slice(0);
-            todayDesc = t2Desc.slice(0);
-            break;
-        case 5: //fri
-            todayHours = t3Hours.slice(0);
-            todayMinutes = t3Minutes.slice(0);
-            todayDesc = t3Desc.slice(0);
-            break;
-        default:
-            todayHours = t1Hours.slice(0);
-            todayMinutes = t1Minutes.slice(0);
-            todayDesc = t1Desc.slice(0);
-            break;
+    if (assemblyDay==true){
+        switch (day){
+            case 3: //wed
+            case 4:
+                todayHours = a2Hours.slice(0);
+                todayMinutes = a2Minutes.slice(0);
+                todayDesc = a2Desc.slice(0);
+                break;
+            case 5: //fri
+                todayHours = a3Hours.slice(0);
+                todayMinutes = a3Minutes.slice(0);
+                todayDesc = a3Desc.slice(0);
+                break;
+            default:
+                todayHours = a1Hours.slice(0);
+                todayMinutes = a1Minutes.slice(0);
+                todayDesc = a1Desc.slice(0);
+                break;
+        }
+    }else
+    {
+        switch (day){
+            case 3: //wed
+            case 4:
+                todayHours = t2Hours.slice(0);
+                todayMinutes = t2Minutes.slice(0);
+                todayDesc = t2Desc.slice(0);
+                break;
+            case 5: //fri
+                todayHours = t3Hours.slice(0);
+                todayMinutes = t3Minutes.slice(0);
+                todayDesc = t3Desc.slice(0);
+                break;
+            default:
+                todayHours = t1Hours.slice(0);
+                todayMinutes = t1Minutes.slice(0);
+                todayDesc = t1Desc.slice(0);
+                break;
+        }
     }
     var i = 0;
 
@@ -66,7 +124,7 @@ setInterval(function doCount(){
     //next period
     var nowAbsolute = nowHours*60 + nowMinutes;
     while ((todayHours[i]*60 + todayMinutes[i] - 1) < nowAbsolute && nowAbsolute < 915){i++}
-    if (i==10){i=0}
+    if (i==12){i=0}
 
 
     //put last
@@ -94,32 +152,32 @@ setInterval(function doCount(){
     }
 
     //week
-    if (weekChecked==false){
-        var weekNum = getWeekNumber(now) - 17;
-        var weekLetter;
-        var weekLetterI;
-        var weekLetterArr=["A","B","C"]
-        //weekend correction
-        if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){weekNum+=1}
-        switch (weekNum){
-            case 5:
-            case 8:
-                weekLetterI=0;
-                break;
-            case 6:
-            case 9:
-                weekLetterI=1;
-                break;
-            case 4:
-            case 7:
-                weekLetterI=2;
-                break;
+    if (weekChecked==false && day!=6 && day!=0){
+        if (assemblyDay==true){
+            document.getElementById("week").innerHTML="Changed Belltimes: "+assemblyReason;
         }
-        weekLetter=weekLetterArr[weekLetterI];
-
-        /*Android Specific*/
-        if (updateAvailable==false){
-
+        else{
+            var weekNum = getWeekNumber(now) - 17;
+            var weekLetter;
+            var weekLetterI;
+            var weekLetterArr=["A","B","C"]
+            //weekend correction
+            if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){weekNum+=1}
+            switch (weekNum){
+                case 5:
+                case 8:
+                    weekLetterI=0;
+                    break;
+                case 6:
+                case 9:
+                    weekLetterI=1;
+                    break;
+                case 4:
+                case 7:
+                    weekLetterI=2;
+                    break;
+            }
+            weekLetter=weekLetterArr[weekLetterI];
             if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){
 
                 document.getElementById("week").innerHTML= "School starts on Week <b>"+weekNum+weekLetter+"</b>";
@@ -128,19 +186,16 @@ setInterval(function doCount(){
                 document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
             }
         }
-        else{ //update available
-            document.getElementById("week").innerHTML=updateText;
-        }
         weekChecked=true;
-    }
 
-/*    if (weekNum > 9){
-        document.getElementById("description").innerHTML= "<b>Update app now</b>";
-        document.getElementById("counter").innerHTML= "Visit website";
-        document.getElementById("week").innerHTML= "<b>APP IS PAST ITS USE-BY DATE.</b>";
-        document.getElementById("copyright").innerHTML= "GO TO  http://www.sydneyboyshigh.asia NOW";
-        document.getElementById("bottom").innerHTML= " ";
-    }*/
+    }
+    /*if (weekNum > 9){
+     document.getElementById("description").innerHTML= "<b>Update app now</b>";
+     document.getElementById("counter").innerHTML= "Visit website";
+     document.getElementById("week").innerHTML= "<b>APP IS PAST ITS USE-BY DATE.</b>";
+     document.getElementById("copyright").innerHTML= "GO TO  http://www.sydneyboyshigh.asia NOW";
+     document.getElementById("bottom").innerHTML= " ";
+     }*/
 }, 500);
 
 function zeroPad(num) {
