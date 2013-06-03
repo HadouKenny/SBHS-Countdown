@@ -52,15 +52,17 @@ setInterval(function doCount(){
 
     <!--BEGIN GRAB SBHS CHANGED TIMES FLAGS-->
     if (assemblyChecked==false){
-
-        var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-0'+(now.getMonth()+1)+'-'+now.getDate();
+        var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-'+(now.getMonth()+1)+'-'+now.getDate();
         //var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-05-30';
         $.getJSON(url, function(data){
-            console.log(data.bellsAltered);
+            console.log("Getting "+url);
             if (data.bellsAltered==true){
-                console.log("Bell is altered today!")
                 assemblyDay = true;
                 assemblyReason = data.bellsAlteredReason;
+                console.log("Bell is altered today!")
+            }
+            else{
+                console.log("Bell is not altered. (status:"+data.status+", bellsAltered:"+data.bellsAltered+")");
             }
         });
         assemblyChecked=true;
@@ -152,50 +154,42 @@ setInterval(function doCount(){
     }
 
     //week
-    if (weekChecked==false && day!=6 && day!=0){
-        if (assemblyDay==true){
-            document.getElementById("week").innerHTML="Changed Belltimes: "+assemblyReason;
+    if (weekChecked==false && assemblyDay==false){
+        var weekNum = getWeekNumber(now) - 17;
+        var weekLetter;
+        var weekLetterI;
+        var weekLetterArr=["A","B","C"];
+        //weekend correction
+        if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){weekNum+=1}
+        switch (weekNum){
+            case 5:
+            case 8:
+                weekLetterI=0;
+                break;
+            case 6:
+            case 9:
+                weekLetterI=1;
+                break;
+            case 4:
+            case 7:
+                weekLetterI=2;
+                break;
+        }
+        weekLetter=weekLetterArr[weekLetterI];
+        if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){
+
+            document.getElementById("week").innerHTML= "School starts on Week <b>"+weekNum+weekLetter+"</b>";
         }
         else{
-            var weekNum = getWeekNumber(now) - 17;
-            var weekLetter;
-            var weekLetterI;
-            var weekLetterArr=["A","B","C"]
-            //weekend correction
-            if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){weekNum+=1}
-            switch (weekNum){
-                case 5:
-                case 8:
-                    weekLetterI=0;
-                    break;
-                case 6:
-                case 9:
-                    weekLetterI=1;
-                    break;
-                case 4:
-                case 7:
-                    weekLetterI=2;
-                    break;
-            }
-            weekLetter=weekLetterArr[weekLetterI];
-            if ((day==5 && now.getDay()!=4 && (nowHours*60 + nowMinutes)>=915)||day==6||day==0){
-
-                document.getElementById("week").innerHTML= "School starts on Week <b>"+weekNum+weekLetter+"</b>";
-            }
-            else{
-                document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
-            }
+            document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
         }
         weekChecked=true;
-
     }
-    /*if (weekNum > 9){
-     document.getElementById("description").innerHTML= "<b>Update app now</b>";
-     document.getElementById("counter").innerHTML= "Visit website";
-     document.getElementById("week").innerHTML= "<b>APP IS PAST ITS USE-BY DATE.</b>";
-     document.getElementById("copyright").innerHTML= "GO TO  http://www.sydneyboyshigh.asia NOW";
-     document.getElementById("bottom").innerHTML= " ";
-     }*/
+
+    if (assemblyDay==true && day!=6 && day!=0){
+        document.getElementById("week").innerHTML="Changed Belltimes: "+assemblyReason;
+        weekChecked=true;
+    }
 }, 500);
 
 function zeroPad(num) {
