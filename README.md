@@ -10,6 +10,6 @@ Version 2.8 in production
 
 Compile checklist:
 
-[ ] Complete changed belltimes sync
+[x] Complete changed belltimes sync
 
 [ ] Work on reducing file size to 1mb if possible
