@@ -6,7 +6,7 @@ Ported by Kenny Liu
 
 <b>2.8 compile checklist</b>
 
-[x] Complete changed belltimes sync
+[ ] Complete changed belltimes sync
 
 [ ] Work on reducing file size to 1mb if possible
 
