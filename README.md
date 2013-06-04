@@ -4,11 +4,7 @@ Coded by Jerry Yip
 
 Ported by Kenny Liu
 
-Version 2.7 released
-
-Version 2.8 in production
-
-<b>2.8 ompile checklist</b>
+<b>2.8 compile checklist</b>
 
 [x] Complete changed belltimes sync
 
