@@ -8,8 +8,9 @@ Version 2.7 released
 
 Version 2.8 in production
 
-Compile checklist:
+<b>2.8 ompile checklist:</b>
 
 [x] Complete changed belltimes sync
 
 [ ] Work on reducing file size to 1mb if possible
+
