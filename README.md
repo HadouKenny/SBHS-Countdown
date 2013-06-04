@@ -12,6 +12,6 @@ Ported by Kenny Liu
 
 <b>General checklist</b>
 
-- Change app version in index.html<br>var appVersion = "[app version]";<br>ga_storage._trackPageview('/[app version]-index.html');
+- Change app version in index.html<br>var appVersion = "<b>app version</b>";<br>ga_storage._trackPageview('/<b>app version</b>-index.html');
 
-- Change app version in faq.html<br>ga_storage._trackPageview('/[app version]-faq.html');
+- Change app version in faq.html<br>ga_storage._trackPageview('/<b>app version</b>-faq.html');
