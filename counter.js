@@ -1,4 +1,4 @@
-//counter.js v2.8 release
+//counter.js v2.8.1 release
 var day;
 var todayHours;
 var todayMinutes;
@@ -9,33 +9,36 @@ var weekChecked = false;
 var assemblyDay = false;
 var assemblyReason;
 var assemblyChecked = false;
+var changedBells=[];
+var changedHours=[];
+var changedMinutes=[];
 
 setInterval(function doCount(){
     //normal times
-    var t1Hours = [9,9,10,10,11,11,11,12,12,13,14,15];
-    var t1Minutes = [0,5,5,10,10,30,50,50,55,55,15,15];
-    var t1Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","End of Day"];
+    var t1Hours = [9,9,10,10,11,11,12,12,13,14,15];
+    var t1Minutes = [0,5,5,10,10,50,50,55,55,15,15];
+    var t1Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Period 3","Period 3 Ends","Period 4","Recess","Period 5","End of Day"];
 
-    var t2Hours = [9,9,10,10,11,11,12,12,13,14,14,15];
-    var t2Minutes = [0,5,5,10,10,30,30,50,10,10,15,15];
-    var t2Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Recess","Period 3","Lunch","Lunch 2","Period 4","Period 4 Ends","Period 5","End of Day"];
+    var t2Hours = [9,9,10,10,11,11,12,13,14,14,15];
+    var t2Minutes = [0,5,5,10,10,30,30,10,10,15,15];
+    var t2Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Recess","Period 3","Lunch","Period 4","Period 4 Ends","Period 5","End of Day"];
 
-    var t3Hours = [9,9,10,10,11,11,12,13,13,14,14,15];
-    var t3Minutes = [25,30,25,30,25,45,5,0,5,0,20,15];
-    var t3Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","Weekend"];
-
-    //assembly times
+    var t3Hours = [9,9,10,10,11,12,13,13,14,14,15];
+    var t3Minutes = [25,30,25,30,25,5,0,5,0,20,15];
+    var t3Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Period 3","Period 3 Ends","Period 4","Recess","Period 5","Weekend"];
+    /*//assembly times
     var a1Hours = [9,9,10,10,11,11,12,13,13,13,14,15];
     var a1Minutes = [0,5,15,20,30,50,10,0,5,55,15,15];
     var a1Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","End of Day"];
 
     var a2Hours = [9,9,10,10,11,11,12,12,13,14,15];
     var a2Minutes = [0,5,10,15,20,40,30,50,10,10,15];
-    var a2Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Recess","Period 3","Lunch","Lunch 2","Period 4","Period 4 Ends","Period 5","End of Day"];
+    var a2Desc = ["School Starts","Period 1","Transition","Period 2","Recess","Period 3","Lunch","Lunch 2","Period 4","Transition","Period 5","End of Day"];
 
-    var a3Hours = [9,9,10,10,11,12,12,13,13,14,14,15];
-    var a3Minutes = [25,30,35,40,45,5,25,10,15,0,20,15];
-    var a3Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","Weekend"];
+    var a3Hours = [  9, 9, 10,10,11,12,12,13,13,14,14,15];
+    var a3Minutes = [25,30,35,40,45,5, 25,10,15, 0, 20,15];
+    var a3Desc = ["School Starts","Period 1","Transition","Period 2","Lunch","Lunch 2","Period 3","Transition","Period 4","Recess","Period 5","Weekend"];
+*/
 
     //begin logic
     var now = new Date();
@@ -50,28 +53,52 @@ setInterval(function doCount(){
         nextDay = true;
     }
 
-    <!--BEGIN GRAB SBHS CHANGED TIMES FLAGS-->
+    <!--BEGIN GRAB SBHS CHANGED TIMES FLAGS, thanks to SBHS IT-->
     if (assemblyChecked==false){
-        var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-'+(now.getMonth()+1)+'-'+now.getDate();
-        //var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-05-30';
-        $.getJSON(url, function(data){
-            console.log("Getting "+url);
-            if (data.bellsAltered==true){
-                assemblyDay = true;
-                assemblyReason = data.bellsAlteredReason;
-                console.log("Bell is altered today!")
-            }
-            else{
-                console.log("Bell is not altered. (status:"+data.status+", bellsAltered:"+data.bellsAltered+")");
+        //var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-'+(now.getMonth()+1)+'-'+now.getDate();
+        var url = 'http://student.sbhs.net.au/api/timetable/bells.json?date=2013-'+(now.getMonth()+1)+'-'+now.getDate()+'&callback=?';
+        //var url = 'http://student.sbhs.net.au/api/timetable/bells.json?date=2013-'+6+'-'+5+'&callback=?';
+        console.log("Getting "+url);
+
+        $.ajax({
+            url: url,
+            dataType: "json",
+            success: function(data){
+                if (data.bellsAltered==true){
+                    assemblyDay = true;
+                    assemblyReason = data.bellsAlteredReason;
+                    console.log("Bell is altered today!");
+
+                    var temp;
+                    console.log(data.bells[2].time);
+                    for (var p=0; p<data.bells.length; p++){
+                        temp = (data.bells[p].time);
+                        changedBells[p]= temp;
+                    }
+                    console.log(changedBells);
+
+                    for (var h=0; h<changedBells.length; h++){
+                        changedHours[h]=changedBells[h].substr(0,3);
+                        changedMinutes[h]=changedBells[h].substr(3,5);
+                    }
+                }
+                else {
+                    console.log("Bell is not altered. (status:"+data.status+", bellsAltered:"+data.bellsAltered+")");
+                }
+            },
+            error: function(XHR, textStatus, errorThrown){
+                console.log("Error Status: " + textStatus);
+                console.log("Error Thrown: " + errorThrown);
             }
         });
+
         assemblyChecked=true;
     }
     <!--END GRAB SBHS CHANGED TIMES FLAGS-->
 
     //grab timetables
     if (assemblyDay==true){
-        switch (day){
+        /*switch (day){
             case 3: //wed
             case 4:
                 todayHours = a2Hours.slice(0);
@@ -88,7 +115,9 @@ setInterval(function doCount(){
                 todayMinutes = a1Minutes.slice(0);
                 todayDesc = a1Desc.slice(0);
                 break;
-        }
+        }*/
+        todayHours = changedHours.slice(0);
+        todayMinutes = changedMinutes.slice(0);
     }else
     {
         switch (day){
@@ -101,8 +130,7 @@ setInterval(function doCount(){
             case 5: //fri
                 todayHours = t3Hours.slice(0);
                 todayMinutes = t3Minutes.slice(0);
-                todayDesc = t3Desc.slice(0);
-                break;
+                todayDesc = t3Desc.slice(0); break;
             default:
                 todayHours = t1Hours.slice(0);
                 todayMinutes = t1Minutes.slice(0);
@@ -126,7 +154,7 @@ setInterval(function doCount(){
     //next period
     var nowAbsolute = nowHours*60 + nowMinutes;
     while ((todayHours[i]*60 + todayMinutes[i] - 1) < nowAbsolute && nowAbsolute < 915){i++}
-    if (i==12){i=0}
+    if (i==todayHours.length+1){i=0}
 
 
     //put last
