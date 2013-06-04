@@ -16,7 +16,7 @@ setInterval(function doCount(){
     var t1Minutes = [0,5,5,10,10,30,50,50,55,55,15,15];
     var t1Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Lunch","Lunch 2","Period 3","Period 3 Ends","Period 4","Recess","Period 5","End of Day"];
 
-    var t2Hours = [9,9,10,11,11,11,12,12,13,14,14,15];
+    var t2Hours = [9,9,10,10,11,11,12,12,13,14,14,15];
     var t2Minutes = [0,5,5,10,10,30,30,50,10,10,15,15];
     var t2Desc = ["School Starts","Period 1","Period 1 Ends","Period 2","Recess","Period 3","Lunch","Lunch 2","Period 4","Period 4 Ends","Period 5","End of Day"];
 
