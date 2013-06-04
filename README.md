@@ -17,4 +17,5 @@ Version 2.8 in production
 <b>General checklist</b>
 
 - Change app version in index.html<br>var appVersion = "app version";<br>ga_storage._trackPageview('/app version-index.html');
+
 - Change app version in faq.html<br>ga_storage._trackPageview('/2.8-faq.html');
