@@ -78,7 +78,7 @@ setInterval(function doCount(){
                     console.log(changedBells);
 
                     for (var h=0; h<changedBells.length; h++){
-                        changedHours[h]=changedBells[h].substr(0,3);
+                        changedHours[h]=changedBells[h].substr(0,2);
                         changedMinutes[h]=changedBells[h].substr(3,5);
                     }
                 }
@@ -118,6 +118,12 @@ setInterval(function doCount(){
         }*/
         todayHours = changedHours.slice(0);
         todayMinutes = changedMinutes.slice(0);
+        if (day==4 || day==3){
+            todayDesc = t2Desc.slice(0);
+        }
+        else{
+            todayDesc = t1Desc.slice(0);
+        }
     }else
     {
         switch (day){
@@ -154,7 +160,7 @@ setInterval(function doCount(){
     //next period
     var nowAbsolute = nowHours*60 + nowMinutes;
     while ((todayHours[i]*60 + todayMinutes[i] - 1) < nowAbsolute && nowAbsolute < 915){i++}
-    if (i==todayHours.length+1){i=0}
+    if (i==11){i=0}
 
 
     //put last
