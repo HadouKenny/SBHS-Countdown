@@ -12,8 +12,8 @@ Ported by Kenny Liu
 
 <b>General checklist</b>
 
-- Change version number in index.html<br>var appVersion = "<b>version no.</b>";<br>ga_storage._trackPageview('/<b>version no.</b>-index.html');
+- Change version number in index.html<br>var appVersion = "<b>version #</b>";<br>ga_storage._trackPageview('/<b>version #</b>-index.html');
 
-- Change version number in faq.html<br>ga_storage._trackPageview('/<b>version no.</b>-faq.html');
+- Change version number in faq.html<br>ga_storage._trackPageview('/<b>version #</b>-faq.html');
 
-- Change version number in config.xml<br>version   = "<b>version no.</b>"
+- Change version number in config.xml<br>version   = "<b>version #</b>"
