@@ -3,20 +3,20 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.sbhs.belltimes"
         versionCode="10" 
-        version   = "2.8.1">
+        version   = "3.0">
 
     <name>Belltimes</name>
 
     <description>
         A minimalistic belltime countdown for Sydney Boys High School, 2013
-        SBHS Belltimes also available on www.sydneyboyshigh.asia 
+        SBHS Belltimes also available on www.sbhsbelltimes.tk 
     </description>
     
     <preference name="permissions" value="none"/>
     <preference name="exit-on-suspend" value="true" />
     <preference name="splash-screen-duration" value="2250" />
     <gap:splash src="splash2.jpg" gap:platform="android" />
-    <preference name="phonegap-version" value="2.7.0" />
+    <preference name="phonegap-version" value="3.0" />
     <icon src="Icons/icon.png" />
     
     <!-- <access origin="*" browserOnly="true" /> -->
