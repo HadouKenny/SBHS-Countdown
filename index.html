@@ -1,112 +1,26 @@
-<!DOCTYPE html><!--M3 Release-->
+<!DOCTYPE html><!--M5 Release-->
 <html>
 <head>
     <title>Belltimes</title>
-    <meta property="fb:admins" content="100001342239314" />
-    <meta property="fb:app_id" content="266559516821504" />
-    <meta property="og:title" content="SBHS Belltimes" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.sydneyboyshigh.asia" />
-    <meta property="og:image" content="http://www.sydneyboyshigh.asia/assets/logo_big.jpg" />
-    <meta property="og:description" content="The fastest way to get a morning detention.">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-
+    
     <link href='./fonts/roboto.css' rel='stylesheet' type='text/css' />
-    <style type="text/css">
-        .centered {
-            text-align: center;
-            position: absolute;
-            left: 0px;
-            width: 100%;
-            top: 5%;
-            overflow: visible;
-            display: block;
-        }
-        .align {
-            text-align: center;
-            position: absolute;
-            left: 0px;
-            width: 100%;
-            overflow: visible;
-            display: block;
-        }
-        #week {
-            font-family: "Roboto", sans-serif;
-            text-align: center;
-            font-weight: 100;
-            font-size: 14px;
-            color: #D6D6D6;
-            top: 7px;
-            left: 10px;
-        }
-        #description {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 300;
-            font-size: 50px;
-            color: #D6D6D6;
-            height: 80px;
-            line-height:50px;
-            padding-top:5px;
-            padding-bottom:0px;
-        }
-        #in {
-            font-family: 'Roboto', sans-serif;
-            font-style: normal;
-            font-weight: 100;
-            font-size: 22px;
-            color: #D6D6D6;
-            line-height:0px;
-            padding-top:0px;
-            padding-bottom:10px;
-
-        }
-        #counter {
-            font-family: 'Roboto', sans-serif;
-            font-size: 110px;
-            font-weight: 100;
-            color: #D6D6D6;
-            line-height: 1.1em;
-        }
-        #faq{
-            position: fixed;
-            bottom: 7px;
-            left: 10px;
-            font-family: "Roboto", sans-serif;
-            text-align: left;
-            font-weight: 100;
-            font-size: 18px;
-            color: #d7d7d7;
-            z-index: 10;
-        }
-        #bottom {
-            position: fixed;
-            bottom: 7px;
-            font-family: "Roboto", sans-serif;
-            text-align: center;
-            font-weight: 100;
-            font-size: 12px;
-        }
-        #copyright{
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            font-family: "Roboto", sans-serif;
-            text-align: right;
-            font-weight: 100;
-            font-size: 12px;
-            color: #d7d7d7;
-
-        }
-    </style>
+    
+    <script src="scripts/jquery-2.0.2.min.js"></script>
+    <link rel="stylesheet" href="scripts/responsive.css">
+    <link rel="stylesheet" href="scripts/animate-custom.css">
+    <link rel="stylesheet" href="scripts/alerts.css">
+    
     <!--Android Specific-->
     <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
-    <script type="text/javascript"language="javascript">
-        var appVersion = "2.8.1"; //REMEMBER UPDATE THIS
+    <script type="text/javascript" language="javascript">
+        var appVersion = "3.0"; //REMEMBER UPDATE THIS
         var updateAvailable = false;
         var updateText;
     </script>
-    <script src="jquery.min.js"></script>
-    <script type="text/javascript"language="javascript"charset="utf-8" src="http://sydneyboyshigh.asia/downloads/remote_update.js"></script>
+
+    <script type="text/javascript"language="javascript"charset="utf-8" src="http://www.sbhsbelltimes.tk/downloads/remote_update.js"></script>
     <script type="text/javascript"language="javascript"src="counter.js"></script>
     
     <!--Phonegap Specific-->
@@ -115,20 +29,22 @@
     <script type="text/javascript" src="GALocalStorage.js"></script>
     <script>
     ga_storage._setAccount('UA-40772969-3');
-    ga_storage._trackPageview('/2.8.1-index.html'); //REMEMBER UPDATE THIS
+    ga_storage._trackPageview('/3.0-index.html'); //REMEMBER UPDATE THIS
     </script>
     
 </head>
 <body bgcolor="#000000">
-<div id="week"></div>
+<div class="alerts"></div>
+<div id="week" class="animated flipInX"><i><span style="color:#969696">Loading real-time data...</span></i></div>
 <div id="container" class="centered" >
     <div id="description"></div>
-    <div id="in">in</div>
+    <div id="in" class="animated bounceIn">in</div>
     <div id="counter"></div>
 </div>
-<div id="faq"><a href="faq.html" style="color: #00aced"><img src="i.png" height=15px hspace=3px>FAQ</a></div>
-<div id="bottom" class="align"><a href="#" target="_blank" style="color: #00aced" onClick="window.open('https://docs.google.com/forms/d/1J-FFPzJkBjCOY4U73xIIe_UwwMqMevmX6T9FZKLmQA0/viewform', '_blank', 'location=yes');">Give Feedback</a></div>
-<div id="copyright">&#169 Jerry Yip 2013<br>Ported with Kenny Liu</div>
+
+<div id="faq" style="cursor: pointer;" onclick="window.location='faq.html';"><a href="faq.html" style="color: #00aced"><img src="assets/i.png" id="icon">FAQ</a></div>
+<div id="bottom" class="align animated fadeInUpBig waitBig"><a href="https://docs.google.com/forms/d/1J-FFPzJkBjCOY4U73xIIe_UwwMqMevmX6T9FZKLmQA0/viewform" target="_blank" style="color: #00aced">Give Feedback</a></div>
+<div id="copyright" class="animated fadeInUpBig waitBig">&#169 Jerry Yip 2013</div>
 <br><br>
 
 </body>
