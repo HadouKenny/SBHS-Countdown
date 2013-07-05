@@ -25,6 +25,7 @@
     
     <gap:plugin name="FacebookConnect">
         <param name="APP_ID" value="266559516821504" />
+        <param name="APP_NAME" value="SBHS Belltimes" />
     </gap:plugin>
  
 </widget>
