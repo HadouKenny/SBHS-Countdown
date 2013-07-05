@@ -4,11 +4,9 @@ Coded by Jerry Yip
 
 Ported by Kenny Liu
 
-<b>2.8 compile checklist</b>
+<b>3.0 compile checklist</b>
 
-[ ] Complete changed belltimes sync
-
-[ ] Work on reducing file size to 1mb if possible
+[ ] Do stuff
 
 <b>General checklist</b>
 
