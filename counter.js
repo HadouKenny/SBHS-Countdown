@@ -244,7 +244,7 @@ setInterval(function doCount(){
 setInterval(function nag(){
     document.getElementById("faq").className="";
     setTimeout(function(){document.getElementById("faq").className="animated wobble";},200);
-}, 5000);
+}, 9000);
 
 function zeroPad(num) {
     var s = "000" + num;
