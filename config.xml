@@ -14,7 +14,7 @@
     
     <preference name="permissions" value="none"/>
     <preference name="exit-on-suspend" value="true" />
-    <preference name="splash-screen-duration" value="1800" />
+    <preference name="splash-screen-duration" value="1900" />
     <gap:splash src="splash2.jpg" gap:platform="android" />
     <preference name="phonegap-version" value="2.7.0" />
     <icon src="Icons/icon_updated_2.png" />
