@@ -49,14 +49,12 @@ setInterval(function doCount(){
 
     <!--BEGIN GRAB SBHS CHANGED TIMES FLAGS, thanks to SBHS IT-->
     if (assemblyChecked==false){
-        //var url = 'http://jsonp.jit.su/?callback=?&url=http://student.sbhs.net.au/api/timetable/bells.json?date=2013-'+(now.getMonth()+1)+'-'+now.getDate();
         if (nextDay==true){
             var url = 'http://student.sbhs.net.au/api/timetable/bells.json?date='+(now.getFullYear())+'-'+(now.getMonth()+1)+'-'+(now.getDate()+1)+'&callback=?';
         }
         else{
             var url = 'http://student.sbhs.net.au/api/timetable/bells.json?date='+(now.getFullYear())+'-'+(now.getMonth()+1)+'-'+(now.getDate())+'&callback=?';
         }
-        /*var url = 'http://student.sbhs.net.au/api/timetable/bells.json?date=2013-6-26&callback=?';*/
         console.log("Getting "+url);
 
         setTimeout(function () {
@@ -97,7 +95,7 @@ setInterval(function doCount(){
                     console.log("Error Thrown: " + errorThrown);
 
                     document.getElementById("week").innerHTML="<a style='color: #ffbb33'>Real-time data unavailable</a>";
-                    document.getElementById("week").className="animated bounceIn shake wait3"
+                    document.getElementById("week").className="animated bounceIn shake wait15"
                 }
             });
         }, 300); /*waste time*/
@@ -179,8 +177,8 @@ setInterval(function doCount(){
         else{
             document.getElementById("counter").innerHTML= "<b><a style='color: #ffbb33'>"+zeroPad(rMinutes)+"</a></b>m, <b><a style='color: #ffbb33'>"+zeroPad(rSeconds)+"</a></b>s.";
         }
-        document.getElementById("description").className="animated fadeInUp wait3";
-        document.getElementById("counter").className="animated flash wait3";
+        document.getElementById("description").className="animated fadeInUp wait2";
+        document.getElementById("counter").className="animated flash wait2";
 
     }
     else{
@@ -199,14 +197,14 @@ setInterval(function doCount(){
             }, 900);
         }
         else{ //first run
-            document.getElementById("description").className="animated fadeInUp wait3";
-            document.getElementById("counter").className="animated fadeInDown wait3";
+            document.getElementById("description").className="animated fadeInUp wait2";
+            document.getElementById("counter").className="animated fadeInDown wait2";
         }
     }
 
     //fun stuff
     if (rHours==0 && rMinutes==0 && rSeconds==1){
-
+        //next period
         //document.getElementById("counter", "description").className="";
         setTimeout(function(){
             document.getElementById("description").className="animated bounceOutRight waitSmall";
@@ -224,11 +222,11 @@ setInterval(function doCount(){
             else{ //normal day
                 document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
             }
-            document.getElementById("week").className="animated bounceIn wait15";
+            document.getElementById("week").className="animated bounceIn wait3";
         }
         if (assemblyDay==true && day!=6 && day!=0){
             document.getElementById("week").innerHTML="<a style='color: #ffbb33'>Changed Belltimes: "+assemblyReason+"</a>";
-            document.getElementById("week").className="animated bounceIn flash wait15";
+            document.getElementById("week").className="animated bounceIn flash wait3";
         }
         //show lame jokes on holidays, shamelessly stolen from http://jokes4us.com/miscellaneousjokes/schooljokes/
         if (weekNum==undefined && weekLetter==undefined){
