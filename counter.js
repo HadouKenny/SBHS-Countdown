@@ -222,11 +222,11 @@ setInterval(function doCount(){
             else{ //normal day
                 document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
             }
-            document.getElementById("week").className="animated bounceIn wait2";
+            document.getElementById("week").className="animated bounceIn wait15";
         }
         if (assemblyDay==true && day!=6 && day!=0){
             document.getElementById("week").innerHTML="<a style='color: #ffbb33'>Changed Belltimes: "+assemblyReason+"</a>";
-            document.getElementById("week").className="animated bounceIn flash wait2";
+            document.getElementById("week").className="animated bounceIn flash wait15";
         }
         //show lame jokes on holidays, shamelessly stolen from http://jokes4us.com/miscellaneousjokes/schooljokes/
         if (weekNum==undefined && weekLetter==undefined){
