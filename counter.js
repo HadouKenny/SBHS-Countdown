@@ -95,7 +95,7 @@ setInterval(function doCount(){
                     console.log("Error Thrown: " + errorThrown);
 
                     document.getElementById("week").innerHTML="<a style='color: #ffbb33'>Real-time data unavailable</a>";
-                    document.getElementById("week").className="animated bounceIn shake wait15"
+                    document.getElementById("week").className="animated bounceIn shake waitBig"
                 }
             });
         }, 300); /*waste time*/
@@ -177,8 +177,8 @@ setInterval(function doCount(){
         else{
             document.getElementById("counter").innerHTML= "<b><a style='color: #ffbb33'>"+zeroPad(rMinutes)+"</a></b>m, <b><a style='color: #ffbb33'>"+zeroPad(rSeconds)+"</a></b>s.";
         }
-        document.getElementById("description").className="animated fadeInUp wait2";
-        document.getElementById("counter").className="animated flash wait2";
+        document.getElementById("description").className="animated fadeInUp wait15";
+        document.getElementById("counter").className="animated flash wait15";
 
     }
     else{
@@ -197,8 +197,8 @@ setInterval(function doCount(){
             }, 900);
         }
         else{ //first run
-            document.getElementById("description").className="animated fadeInUp wait2";
-            document.getElementById("counter").className="animated fadeInDown wait2";
+            document.getElementById("description").className="animated fadeInUp wait15";
+            document.getElementById("counter").className="animated fadeInDown wait15";
         }
     }
 
@@ -222,11 +222,11 @@ setInterval(function doCount(){
             else{ //normal day
                 document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
             }
-            document.getElementById("week").className="animated bounceIn wait3";
+            document.getElementById("week").className="animated bounceIn wait2";
         }
         if (assemblyDay==true && day!=6 && day!=0){
             document.getElementById("week").innerHTML="<a style='color: #ffbb33'>Changed Belltimes: "+assemblyReason+"</a>";
-            document.getElementById("week").className="animated bounceIn flash wait3";
+            document.getElementById("week").className="animated bounceIn flash wait2";
         }
         //show lame jokes on holidays, shamelessly stolen from http://jokes4us.com/miscellaneousjokes/schooljokes/
         if (weekNum==undefined && weekLetter==undefined){
