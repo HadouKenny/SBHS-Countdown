@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.sbhs.belltimes"
         versionCode="10" 
-        version   = "3.0">
+        version   = "3.1">
 
     <name>Belltimes</name>
 
