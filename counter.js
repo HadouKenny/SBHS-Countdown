@@ -1,4 +1,4 @@
-//counter.js v3.0 release
+//counter.js v3.1 release
 var day;
 var todayHours;
 var todayMinutes;
@@ -179,8 +179,8 @@ setInterval(function doCount(){
         else{
             document.getElementById("counter").innerHTML= "<b><a style='color: #ffbb33'>"+zeroPad(rMinutes)+"</a></b>m, <b><a style='color: #ffbb33'>"+zeroPad(rSeconds)+"</a></b>s.";
         }
-        document.getElementById("description").className="animated fadeInUp";
-        document.getElementById("counter").className="animated flash";
+        document.getElementById("description").className="animated fadeInUp waitSmall";
+        document.getElementById("counter").className="animated flash waitSmall";
 
     }
     else{
