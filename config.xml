@@ -22,7 +22,7 @@
     <!-- <access origin="*" browserOnly="true" /> -->
     
 
-        <gap:plugin name="com.phonegap.plugins.facebook" />
+    <gap:plugin name="com.phonegap.plugins.facebook" />
         <param name="APP_ID" value="266559516821504" />
         <param name="APP_NAME" value="SBHS Belltimes" />
     </gap:plugin>
