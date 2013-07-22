@@ -29,7 +29,7 @@ function getSBHS(url){
         url: url,
         dataType: "json",
         success: function(data){
-            document.getElementById("week").className="animated flipOutX";
+            document.getElementById("week").className="animated flipOutX waitBig";
 
             if (data.bellsAltered==true){
                 assemblyDay = true;
@@ -57,12 +57,12 @@ function getSBHS(url){
             fetchSuccess=true;
         },
         error: function(XHR, textStatus, errorThrown){
-            document.getElementById("week").className="animated flipOutX";
+            document.getElementById("week").className="animated flipOutX waitBig";
             console.log("Error Status: " + textStatus);
             console.log("Error Thrown: " + errorThrown);
 
             document.getElementById("week").innerHTML="<a style='color: #ffbb33'>Real-time data unavailable</a>";
-            document.getElementById("week").className="animated bounceIn shake"
+            document.getElementById("week").className="animated bounceIn shake waitBig"
         }
     });
 }
@@ -167,12 +167,12 @@ setInterval(function doCount(){
             else{ //normal day
                 document.getElementById("week").innerHTML= "Week <b>"+weekNum+weekLetter+"</b>";
             }
-            document.getElementById("week").className="animated bounceIn";
+            document.getElementById("week").className="animated bounceIn waitBig";
             weekChecked=true;
         }
         if (assemblyDay==true && day!=6 && day!=0 && weekLetter!=undefined){
             document.getElementById("week").innerHTML="<a style='color: #ffbb33'>Changed Belltimes: "+assemblyReason+"</a>";
-            document.getElementById("week").className="animated bounceIn flash";
+            document.getElementById("week").className="animated bounceIn flash waitBig";
             weekChecked=true;
         }
 
@@ -244,8 +244,8 @@ setInterval(function doCount(){
         else{
             document.getElementById("counter").innerHTML= "<b><a style='color: #ffbb33'>"+zeroPad(rMinutes)+"</a></b>m, <b><a style='color: #ffbb33'>"+zeroPad(rSeconds)+"</a></b>s.";
         }
-        document.getElementById("description").className="animated fadeInUp waitSmall";
-        document.getElementById("counter").className="animated flash waitSmall";
+        document.getElementById("description").className="animated fadeInUp wait15";
+        document.getElementById("counter").className="animated flash wait15";
 
     }
     else{
@@ -264,8 +264,8 @@ setInterval(function doCount(){
             }, 900);
         }
         else{ //first run
-            document.getElementById("description").className="animated fadeInUp";
-            document.getElementById("counter").className="animated fadeInDown";
+            document.getElementById("description").className="animated fadeInUp wait15";
+            document.getElementById("counter").className="animated fadeInDown wait15";
         }
     }
 
